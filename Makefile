@@ -1,12 +1,11 @@
-# default: lint test
+# default: test
+
+# .PHONY test
+# test: lint
 
 .PHONY lint
 lint:
 	gometalinter --tests --vendor
-
-# .PHONY test
-# test:
-
 
 setup: setup-go setup-dep
 
