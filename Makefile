@@ -1,7 +1,8 @@
-# default: test
+default: test
 
-# .PHONY test
-# test: lint
+.PHONY test
+test: lint
+	go test -v
 
 .PHONY lint
 lint:
