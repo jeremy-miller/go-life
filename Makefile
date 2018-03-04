@@ -1,8 +1,8 @@
 # default: lint test
 
-# .PHONY lint
-# lint:
-
+.PHONY lint
+lint:
+	gometalinter --tests --vendor
 
 # .PHONY test
 # test:
