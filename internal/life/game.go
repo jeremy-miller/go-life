@@ -1,3 +1,6 @@
+/*
+Package life implements a basic version of Conway's Game of Life in Go.
+*/
 package life
 
 const boardWidth = 5
