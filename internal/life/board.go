@@ -6,23 +6,23 @@ type board struct {
 	height int
 }
 
-func newBoard(width, height int, initial []cell) *board {
-	board := newEmptyBoard(width, height)
-	board = initializeBoard(board, initial)
+func newBoard(i *initialLayout) *board {
+	board := newEmptyBoard(i)
+	board = initializeBoard(board, i)
 	return board
 }
 
-func newEmptyBoard(width, height int) *board {
-	cells := make([][]bool, width)
-	for i := range cells {
-		cells[i] = make([]bool, height)
+func newEmptyBoard(i *initialLayout) *board {
+	cells := make([][]bool, i.width)
+	for j := range cells {
+		cells[j] = make([]bool, i.height)
 	}
-	return &board{cells: cells, width: width, height: height}
+	return &board{cells: cells, width: i.width, height: i.height}
 }
 
-func initializeBoard(b *board, cells []cell) *board {
-	for c := range cells {
-		b[c.x][x.y] = true
+func initializeBoard(b *board, i *initialLayout) *board {
+	for _, p := range i.positions {
+		b.cells[p.x][p.y] = true
 	}
 	return b
 }
