@@ -1,10 +1,10 @@
 default: test
 
-.PHONY test
+.PHONY: test
 test: lint
 	go test -v
 
-.PHONY lint
+.PHONY: lint
 lint:
 	gometalinter --tests --vendor
 
