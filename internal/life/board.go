@@ -29,6 +29,10 @@ func initializeBoard(b *board, i *initialLayout) *board {
 
 func (b *board) tick() {
 	// iterate over each cell using goroutines
-	// check if alive/dead, update cell accordingly
-	// NOTE: don't update pointer to board
+	// create copy of board (don't update pointer to board), update cell accordingly
+	// check if alive/dead
+}
+
+func (b *board) print() {
+
 }
