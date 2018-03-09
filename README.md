@@ -3,6 +3,7 @@
 [![Go Version](https://img.shields.io/badge/Go-1.10-blue.svg)]()
 
 Executable - [![GoDoc](https://godoc.org/github.com/jeremy-miller/life-go/cmd/life?status.svg)](https://godoc.org/github.com/jeremy-miller/life-go/cmd/life)
+
 Library - [![GoDoc](https://godoc.org/github.com/jeremy-miller/life-go/internal/life?status.svg)](https://godoc.org/github.com/jeremy-miller/life-go/internal/life)
 
 # Life (in Go)
