@@ -18,12 +18,12 @@ type board struct {
 }
 
 func newBoard(i *initialLayout) *board {
-	board := newEmptyBoard(i)
-	board = initializeBoard(board, i)
+	board := emptyBoard(i)
+	board = initialize(board, i)
 	return board
 }
 
-func newEmptyBoard(i *initialLayout) *board {
+func emptyBoard(i *initialLayout) *board {
 	cells := make([][]int, i.height)
 	for j := range cells {
 		cells[j] = make([]int, i.width)
@@ -31,7 +31,7 @@ func newEmptyBoard(i *initialLayout) *board {
 	return &board{cells: cells, width: i.width, height: i.height}
 }
 
-func initializeBoard(b *board, i *initialLayout) *board {
+func initialize(b *board, i *initialLayout) *board {
 	for _, p := range i.positions {
 		b.cells[p.y][p.x] = 1
 	}
@@ -49,7 +49,7 @@ func (b *board) tick() {
 	}
 	wg.Wait()
 	close(tickedCells)
-	updateBoard(b, tickedCells)
+	update(b, tickedCells)
 }
 
 func tickCell(c cell, b board, tickedCells chan cell) {
@@ -59,7 +59,7 @@ func tickCell(c cell, b board, tickedCells chan cell) {
 }
 
 func aliveAfterTick(c cell, b board) int {
-	livingNeighbors := getLivingNeighbors(c, b)
+	livingNeighbors := livingNeighbors(c, b)
 	alive := 0
 	if c.alive == 1 {
 		switch {
@@ -76,7 +76,7 @@ func aliveAfterTick(c cell, b board) int {
 	return alive
 }
 
-func getLivingNeighbors(c cell, b board) int {
+func livingNeighbors(c cell, b board) int {
 	livingNeighbors := 0
 	for i := -1; i <= 1; i++ {
 		for j := -1; j <= 1; j++ {
@@ -91,7 +91,7 @@ func getLivingNeighbors(c cell, b board) int {
 	return livingNeighbors
 }
 
-func updateBoard(b *board, tickedCells chan cell) {
+func update(b *board, tickedCells chan cell) {
 	for c := range tickedCells {
 		b.cells[c.y][c.x] = c.alive
 	}
