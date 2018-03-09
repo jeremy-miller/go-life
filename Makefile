@@ -1,13 +1,5 @@
 default: test
 
-.PHONY: test
-test: lint
-	go test -v
-
-.PHONY: lint
-lint:
-	gometalinter --tests --vendor
-
 setup: setup-go setup-dep
 
 setup-go:
@@ -17,6 +9,14 @@ setup-go:
 setup-dep:
 	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 	dep ensure
+
+.PHONY: test
+test: lint
+	go test -v
+
+.PHONY: lint
+lint:
+	gometalinter --tests --vendor
 
 build: lint
 	go install ./cmd/...
