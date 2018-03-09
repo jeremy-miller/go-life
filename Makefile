@@ -21,6 +21,7 @@ lint:
 build: lint
 	go install ./cmd/...
 
+# e.g. make life iterations=3
 run:
 	life $(iterations)
 
