@@ -22,7 +22,7 @@ build: lint
 	go install ./cmd/...
 
 run:
-	life
+	life $(iterations)
 
 clean:
 	go clean ./...
