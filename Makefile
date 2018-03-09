@@ -17,3 +17,13 @@ setup-go:
 setup-dep:
 	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 	dep ensure
+
+# lint
+build:
+	go install ./cmd/...
+
+run:
+	life
+
+clean:
+	go clean ./...
