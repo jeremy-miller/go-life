@@ -26,3 +26,8 @@ run:
 
 clean:
 	go clean ./...
+
+# e.g. make simplify files=internal/life/
+.PHONY: simplify
+simplify:
+	gofmt -s -d $(files)
