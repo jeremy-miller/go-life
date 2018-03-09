@@ -8,4 +8,16 @@ Library - https://godoc.org/github.com/jeremy-miller/life-go/internal/life?statu
 # Life (in Go)
 Go implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
+TODO
 - move wg back into function
+- write unit tests
+- write integration tests
+- write property tests
+- write benchmark tests
+- update documentation
+- write doctests
+- add code coverage
+- check dependencies
+- makefile target to only run stale tests
+- create dockerfile
+- add CI/CD
