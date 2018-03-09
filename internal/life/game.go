@@ -11,8 +11,8 @@ func Run(iterations int) {
 	board := newBoard(&blinker)
 	board.print()
 	for i := 0; i < iterations; i++ {
+		time.Sleep(1 * time.Second)
 		board.tick()
 		board.print()
-		time.Sleep(5 * time.Second)
 	}
 }

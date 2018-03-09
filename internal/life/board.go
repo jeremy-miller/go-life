@@ -5,6 +5,8 @@ import (
 	"sync"
 )
 
+var wg sync.WaitGroup
+
 type cell struct {
 	x, y, alive int
 }
@@ -38,19 +40,19 @@ func initializeBoard(b *board, i *initialLayout) *board {
 
 func (b *board) tick() {
 	var tickedCells = make(chan cell, b.width*b.height)
-	var wg sync.WaitGroup
 	for y, column := range b.cells {
 		for x, alive := range column {
 			cell := cell{x: x, y: y, alive: alive}
 			wg.Add(1)
-			go tickCell(cell, *b, tickedCells, &wg)
+			go tickCell(cell, *b, tickedCells)
 		}
 	}
 	wg.Wait()
+	close(tickedCells)
 	updateBoard(b, tickedCells)
 }
 
-func tickCell(c cell, b board, tickedCells chan cell, wg *sync.WaitGroup) {
+func tickCell(c cell, b board, tickedCells chan cell) {
 	defer wg.Done()
 	c.alive = aliveAfterTick(c, b)
 	tickedCells <- c
@@ -77,11 +79,11 @@ func aliveAfterTick(c cell, b board) int {
 func getLivingNeighbors(c cell, b board) int {
 	livingNeighbors := 0
 	for i := -1; i <= 1; i++ {
-		if i >= 0 && i < b.height {
-			for j := -1; j <= 1; j++ {
-				if j >= 0 && j < b.width {
-					livingNeighbors += b.cells[c.y+i][c.x+j]
-				}
+		for j := -1; j <= 1; j++ {
+			neighborX := c.x + j
+			neighborY := c.y + i
+			if neighborX >= 0 && neighborY >= 0 && neighborX < b.width && neighborY < b.height {
+				livingNeighbors += b.cells[c.y+i][c.x+j]
 			}
 		}
 	}
@@ -99,11 +101,12 @@ func (b *board) print() {
 	for h := 0; h < b.height; h++ {
 		for w := 0; w < b.width; w++ {
 			if b.cells[h][w] == 1 {
-				fmt.Print('O')
+				fmt.Print("O")
 			} else {
-				fmt.Print(' ')
+				fmt.Printf(".")
 			}
 		}
 		fmt.Println()
 	}
+	fmt.Println()
 }
