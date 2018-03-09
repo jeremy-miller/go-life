@@ -18,8 +18,7 @@ setup-dep:
 	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 	dep ensure
 
-# lint
-build:
+build: lint
 	go install ./cmd/...
 
 run:
