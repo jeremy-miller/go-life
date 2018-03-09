@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/jeremy-miller/life-go)](https://goreportcard.com/report/github.com/jeremy-miller/life-go)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeremy-miller/life-go/blob/master/LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.10-blue.svg)]()
 
