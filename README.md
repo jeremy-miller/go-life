@@ -18,6 +18,5 @@ TODO
 - write doctests
 - add code coverage
 - check dependencies
-- makefile target to only run stale tests
 - create dockerfile
 - add CI/CD
