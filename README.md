@@ -17,6 +17,5 @@ TODO
 - update documentation
 - write doctests
 - add code coverage
-- check dependencies
 - create dockerfile
 - add CI/CD
