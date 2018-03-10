@@ -1,0 +1,6 @@
+.vscode/
+debug
+vendor/
+.gitignore
+LICENSE
+README.md
