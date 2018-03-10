@@ -1,5 +1,7 @@
 /*
-Package main executes a certain number of iterations of the game of the life.
+Package main executes Conway's Game of Life.
+
+An integer can be passed on the command line to control the number of iterations of the game (default 5).
 */
 package main
 

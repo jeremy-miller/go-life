@@ -14,7 +14,6 @@ TODO
 - write integration tests
 - write property tests
 - write benchmark tests
-- update documentation
 - write doctests
 - add code coverage
 - create dockerfile

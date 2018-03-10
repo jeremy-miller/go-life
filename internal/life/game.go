@@ -1,12 +1,16 @@
 /*
-Package life implements a basic version of Conway's Game of Life in Go.
+Package life implements Conway's Game of Life.
+
+Reference: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 */
 package life
 
 import "time"
 
-// Run initializes the game and then runs it the provided number of iterations, printing the
-// state of the board between iterations.
+// Run initializes the game board with an initial configuration, then runs the game the provided
+// number of iterations.  The board state is printed between iterations.
+//
+// Currently the only supported initial configuration is "blinker", which is used by default.
 func Run(iterations int) {
 	board := newBoard(&blinker)
 	board.print()
