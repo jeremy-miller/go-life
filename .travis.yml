@@ -3,5 +3,8 @@ go:
   - "1.10"
 install:
   - make setup
+  - go get github.com/mattn/goveralls
 script:
   - make test
+after_success:
+  - $GOPATH/bin/goveralls -service=travis-ci

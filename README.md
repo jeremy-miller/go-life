@@ -15,6 +15,3 @@ TODO
 - write property tests
 - write benchmark tests
 - write doctests
-- add code coverage
-- create dockerfile
-- add CI/CD
