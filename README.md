@@ -10,7 +10,6 @@ Library - [![GoDoc](https://godoc.org/github.com/jeremy-miller/life-go/internal/
 Go implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
 TODO
-- move wg back into function
 - write unit tests
 - write integration tests
 - write property tests
