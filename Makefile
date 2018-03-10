@@ -15,7 +15,7 @@ setup-dep:
 
 .PHONY: test
 test: lint
-	go test -v
+	go test -v ./...
 
 .PHONY: lint
 lint:
