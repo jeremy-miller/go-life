@@ -33,6 +33,7 @@ run:
 .PHONY: clean
 clean:
 	go clean ./...
+	rm -rf ./cmd/life/debug
 
 # e.g. make simplify files=internal/life/
 .PHONY: simplify
