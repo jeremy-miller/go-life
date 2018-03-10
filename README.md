@@ -12,6 +12,8 @@ Executable - [![GoDoc](https://godoc.org/github.com/jeremy-miller/life-go/cmd/li
 Go implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 The implementation is separated into a library (which implements the game logic) and an executable.
 
+![Usage](https://github.com/jeremy-miller/life-go/blob/master/usage.gif)
+
 TODO
 - write unit tests
 - write integration tests
