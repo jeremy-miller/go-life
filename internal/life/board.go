@@ -5,8 +5,6 @@ import (
 	"sync"
 )
 
-var wg sync.WaitGroup
-
 type cell struct {
 	x, y, alive int
 }
@@ -39,12 +37,13 @@ func initialize(b *board, i *initialLayout) *board {
 }
 
 func (b *board) tick() {
+	var wg sync.WaitGroup
 	var tickedCells = make(chan cell, b.width*b.height)
 	for y, column := range b.cells {
 		for x, alive := range column {
 			cell := cell{x: x, y: y, alive: alive}
 			wg.Add(1)
-			go tickCell(cell, *b, tickedCells)
+			go tickCell(cell, *b, tickedCells, &wg)
 		}
 	}
 	wg.Wait()
@@ -52,7 +51,7 @@ func (b *board) tick() {
 	update(b, tickedCells)
 }
 
-func tickCell(c cell, b board, tickedCells chan cell) {
+func tickCell(c cell, b board, tickedCells chan cell, wg *sync.WaitGroup) {
 	defer wg.Done()
 	c.alive = aliveAfterTick(c, b)
 	tickedCells <- c
