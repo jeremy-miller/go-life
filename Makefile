@@ -17,6 +17,10 @@ setup-dep:
 test: lint
 	go test -v ./...
 
+.PHONY: datarace
+datarace: lint
+	go test -v -race ./...
+
 .PHONY: lint
 lint:
 	gometalinter --tests --vendor

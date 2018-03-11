@@ -6,5 +6,6 @@ install:
   - go get github.com/mattn/goveralls
 script:
   - make test
+  - make datarace
 after_success:
   - $GOPATH/bin/goveralls -service=travis-ci

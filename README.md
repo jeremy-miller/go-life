@@ -38,9 +38,16 @@ To run the [gometalinter](https://github.com/alecthomas/gometalinter), execute t
 ```make lint```
 
 ## Test
+_NOTE: The source files will be linted before the tests run._
+
+### Tests
 To run the tests, execute the following command: ```make test```
 
-_NOTE: The source files will be linted before the tests run._
+### Data Race Detection
+To run the tests with [data race detection](https://golang.org/doc/articles/race_detector.html),
+execute the following command: ```make datarace```
+
+_NOTE: The data race detection is only available on `linux/amd64`, `freebsd/amd64`, `darwin/amd64`, and `windows/amd64`._
 
 ## Run
 By default, the game will run for five iterations, printing the board state to the terminal between each iteration.
