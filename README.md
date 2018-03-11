@@ -14,13 +14,6 @@ The implementation is separated into a library (which implements the game logic)
 
 ![Usage](https://github.com/jeremy-miller/life-go/blob/master/usage.gif)
 
-TODO
-- write unit tests
-- write integration tests
-- write property tests
-- write benchmark tests
-- write doctests
-
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Documentation](#documentation)
