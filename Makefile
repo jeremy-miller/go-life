@@ -8,7 +8,7 @@ default: build
 
 setup:
 	@curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-	$(MAKE) dep
+	@$(MAKE) dep
 
 dep:
 	@go get -u github.com/alecthomas/gometalinter
