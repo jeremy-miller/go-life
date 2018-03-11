@@ -45,7 +45,7 @@ To run the tests, execute the following command: ```make test```
 
 ### Data Race Detection
 To run the tests with [data race detection](https://golang.org/doc/articles/race_detector.html),
-execute the following command: ```make datarace```
+execute the following command: ```make race```
 
 _NOTE: The data race detection is only available on `linux/amd64`, `freebsd/amd64`, `darwin/amd64`, and `windows/amd64`._
 

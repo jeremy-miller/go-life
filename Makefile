@@ -1,45 +1,40 @@
+PROJECT_DIR := "life-go"
+PKG := "github.com/jeremy-miller/$(PROJECT_DIR)"
+PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
+
+.PHONY: setup dep lint build test race run clean simplify
+
 default: build
 
-.PHONY: setup
-setup: setup-go setup-dep
+setup:
+	@curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+	$(MAKE) dep
 
-.PHONY: setup-go
-setup-go:
-	go get -u github.com/alecthomas/gometalinter
-	gometalinter --install
+dep:
+	@go get -u github.com/alecthomas/gometalinter
+	@gometalinter --install
+	@dep ensure
 
-.PHONY: setup-dep
-setup-dep:
-	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-	dep ensure
-
-.PHONY: test
-test: lint
-	go test -v ./...
-
-.PHONY: datarace
-datarace: lint
-	go test -v -race ./...
-
-.PHONY: lint
 lint:
-	gometalinter --tests --vendor
+	@gometalinter --tests --vendor
 
-.PHONY: build
 build: lint
-	go install ./cmd/...
+	@go install $(PKG_LIST)
 
-.PHONY: run
+test: lint
+	@go test -v $(PKG_LIST)
+
+race: lint
+	@go test -v -race $(PKG_LIST)
+
 # e.g. make life iterations=3
 run:
-	life $(iterations)
+	@life $(iterations)
 
-.PHONY: clean
 clean:
-	go clean ./...
-	rm -rf ./cmd/life/debug
+	@go clean $(PKG_LIST)
+	@rm -rf ./cmd/life/debug
 
 # e.g. make simplify files=internal/life/
-.PHONY: simplify
 simplify:
-	gofmt -s -d $(files)
+	@gofmt -s -d $(files)
