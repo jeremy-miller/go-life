@@ -20,6 +20,8 @@ The implementation is separated into a library (which implements the game logic)
 - [Build](#build)
 - [Static Code Analysis](#static-code-analysis)
 - [Test](#test)
+    - [Tests](#tests)
+    - [Data Race Detection](#data-race-detection)
 - [Run](#run)
 - [License](#license)
 
