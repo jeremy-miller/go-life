@@ -1,7 +1,8 @@
 /*
 Package main executes Conway's Game of Life.
 
-An integer can be passed on the command line to control the number of iterations of the game (default 5).
+An integer can be passed on the command line to control the number of iterations
+of the game (default 5).
 */
 package main
 
@@ -9,7 +10,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/jeremy-miller/life-go/internal/life"
+	"github.com/jeremy-miller/life-go/internal/game"
 )
 
 func main() {
@@ -21,5 +22,5 @@ func main() {
 		}
 		iterations = n
 	}
-	life.Run(iterations)
+	game.Run(iterations)
 }

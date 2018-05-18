@@ -1,6 +1,10 @@
 .vscode/
 debug
 vendor/
+.dockerignore
 .gitignore
+.travis.yml
+Dockerfile
 LICENSE
 README.md
+usage.gif

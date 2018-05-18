@@ -1,40 +1,52 @@
-PROJECT_DIR := "life-go"
-PKG := "github.com/jeremy-miller/$(PROJECT_DIR)"
-PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
-
-.PHONY: setup dep lint build test race run clean simplify
+PKG_LIST := $(shell go list ./... | grep -v /vendor/)
 
 default: build
 
+.PHONY: setup
 setup:
 	@curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-	@$(MAKE) dep
-
-dep:
 	@go get -u github.com/alecthomas/gometalinter
+	@go get -u github.com/m3db/build-tools/linters/badtime
+	@go get -u github.com/hypnoglow/durcheck
 	@gometalinter --install
 	@dep ensure
 
-lint:
-	@gometalinter --tests --vendor
+.PHONY: dep
+dep:
+	@dep ensure
 
-build: lint
+# check dependency versions
+.PHONY: dep-versions
+dep-versions:
+	@dep status
+
+.PHONY: lint
+lint:
+	@gometalinter --tests --vendor ./...
+
+.PHONY: build
+build:
 	@go install $(PKG_LIST)
 
-test: lint
-	@go test -v $(PKG_LIST)
-
-race: lint
+.PHONY: test
+test:
 	@go test -v -race $(PKG_LIST)
 
+.PHONY: coverage
+coverage:
+	@go test $(PKG_LIST) -v -coverprofile .testCoverage.txt
+	@go tool cover -func=.testCoverage.txt
+
+.PHONY: run
 # e.g. make life iterations=3
 run:
 	@life $(iterations)
 
+.PHONY: clean
 clean:
 	@go clean $(PKG_LIST)
-	@rm -rf ./cmd/life/debug
+	@rm -rf ./.testCoverage.txt
 
-# e.g. make simplify files=internal/life/
+.PHONY: simplify
 simplify:
-	@gofmt -s -d $(files)
+	@$(foreach file,$(PKG_LIST),gofmt -s -w $(GOPATH)/src/$(file);)

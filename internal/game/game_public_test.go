@@ -1,12 +1,12 @@
-package life_test
+package game_test
 
 import (
-	"github.com/jeremy-miller/life-go/internal/life"
+	"github.com/jeremy-miller/life-go/internal/game"
 )
 
 func ExampleRun() {
 	iterations := 1
-	life.Run(iterations)
+	game.Run(iterations)
 	// Output: .....
 	//.....
 	//.OOO.

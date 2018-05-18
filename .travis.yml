@@ -1,11 +1,13 @@
 language: go
 go:
-  - "1.10"
+  - "1.10.2"
 install:
   - make setup
   - go get github.com/mattn/goveralls
 script:
+  - make lint
+  - make build  # make sure latest code is used during tests
   - make test
-  - make race
+  - make coverage
 after_success:
   - $GOPATH/bin/goveralls -service=travis-ci

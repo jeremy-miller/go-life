@@ -18,8 +18,19 @@
         "unconvert",
         "goconst",
         "gas",
+        "gofmt",
         "goimports",
         "nakedret",
-        "unparam"
-    ]
+        "unparam",
+        "safesql",
+        "badtime",
+        "durcheck"
+    ],
+    "Linters": {
+        "badtime": "badtime:PATH:LINE:COL:MESSAGE",
+        "durcheck": {
+            "Command": "durcheck",
+            "Pattern": "PATH:LINE:COL:MESSAGE"
+        }
+    }
 }
