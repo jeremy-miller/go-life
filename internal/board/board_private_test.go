@@ -17,6 +17,7 @@ func TestNewBoard(t *testing.T) {
 	assert.Equal(t, expected, NewBoard(i))
 }
 
+//nolint: dupl
 func TestTick(t *testing.T) {
 	expected := &Board{
 		cells:  [][]int{{0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}},
@@ -32,6 +33,7 @@ func TestTick(t *testing.T) {
 	assert.Equal(t, expected, b)
 }
 
+//nolint: dupl
 func TestAliveAfterTick(t *testing.T) {
 	expected := &Board{
 		cells:  [][]int{{0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 1}},
