@@ -54,7 +54,7 @@ _NOTE: Data race detection is only available on `linux/amd64`, `freebsd/amd64`,
 `darwin/amd64`, and `windows/amd64` platforms._
 
 ### Coverage
-Output test code coverage for each package: `make cover`
+Output test code coverage for each package: `make coverage`
 
 ## Clean
 Remove all compiled binaries, as well as data created during testing:
